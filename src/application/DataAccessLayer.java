@@ -4,6 +4,8 @@ import java.io.IOException;
 
 public class DataAccessLayer {
 
+	
+	
 	private String connectionURL;
 
 	public DataAccessLayer() throws IOException {
@@ -22,6 +24,5 @@ public class DataAccessLayer {
 
 		}
 	}
-	
-	
+
 }
