@@ -4,6 +4,8 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.*;
 import javafx.scene.control.Button;
@@ -114,7 +116,7 @@ public class SampleController {
 
 	// Find Customer by customer ID
 
-	public void buttonFindCustomer() {
+	public void buttonFindCustomer(ActionEvent a) {
 
 		int customerID = Integer.parseInt(txtIDCustomer.getText());
 		try {
