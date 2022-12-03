@@ -43,6 +43,25 @@ public class DataAccessLayer {
 	}
 
 	//Orders
+	
+	//Create order
+	public int CreateOrder(int OrderID, int OrderDate, int CustomerID, int ProductID)
+			throws SQLException {
+					try {
+					String query = "INSERT INTO PRODUCT VALUES (?,?,?, ?) SET NOCOUNT ON";
+					Connection connection = DriverManager.getConnection(connectionURL);
+					PreparedStatement ps = connection.prepareStatement(query);
+					ps.setInt(1, OrderID);
+					ps.setInt(2, OrderDate);
+					ps.setInt(3,  CustomerID);
+					ps.setInt(4, ProductID);
+					return ps.executeUpdate();
+				}	catch (Exception e) {
+					System.out.println("e: " + e.getMessage());
+			}
+
+			return 0;
+			}
 	//Viewing all orders 
 	
 	public ResultSet viewAllOrders (String orderID) throws SQLException{
@@ -63,6 +82,25 @@ public class DataAccessLayer {
 	
 	
 	//Customer
+	
+	//Creating customer
+	public int CreateCustomer(int CustomerID, String Name, String Address, String LoyaltyLevel)
+			throws SQLException {
+					try {
+					String query = "INSERT INTO PRODUCT VALUES (?,?,?,?) SET NOCOUNT ON";
+					Connection connection = DriverManager.getConnection(connectionURL);
+					PreparedStatement ps = connection.prepareStatement(query);
+					ps.setInt(1, CustomerID);
+					ps.setString(2, Name);
+					ps.setString(3, Address);
+					ps.setString(4,  LoyaltyLevel);
+					return ps.executeUpdate();
+				}	catch (Exception e) {
+					System.out.println("e: " + e.getMessage());
+			}
+			return 0;
+			}
+	
 	//Finding customer by customer ID
 public ResultSet findCustomerByCustomerId( String customerID) throws SQLException{
 		
@@ -109,6 +147,27 @@ public ResultSet findOrdersForCertainCustomer( String customerID) throws SQLExce
 
 //Product
 
+// Creating Products
+public int CreateProduct(int ProductID, String ProductName, int Price)
+throws SQLException {
+		try {
+		String query = "INSERT INTO PRODUCT VALUES (?,?,?) SET NOCOUNT ON";
+		Connection connection = DriverManager.getConnection(connectionURL);
+		PreparedStatement ps = connection.prepareStatement(query);
+		ps.setInt(1, ProductID);
+		ps.setString(2, ProductName);
+		ps.setInt(3,  Price);
+		return ps.executeUpdate();
+	}	catch (Exception e) {
+		System.out.println("e: " + e.getMessage());
+}
+
+return 0;
+}
+
+				
+		
+
 //Finding a product by productID
 public ResultSet findProductByProductId( String productID) throws SQLException{
 	
@@ -127,7 +186,9 @@ public ResultSet findProductByProductId( String productID) throws SQLException{
 }
 
 
-
-
-
 }
+
+
+//COMBOBOXES
+
+// 
