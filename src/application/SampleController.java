@@ -114,6 +114,29 @@ public class SampleController {
 	// CUSTOMERS
 	// Registration of Customer
 
+	public void buttonCreateCustomer(ActionEvent a) {
+		Integer customerID = Integer.parseInt(txtIDCustomer.getText());
+		String name = txtNameCustomer.getText();
+		String address = txtAddressCustomer.getText();
+		String loyaltyLevel = choiceBoxLoyaltyCustomer.getValue().toString();
+
+		if (!name.isEmpty() && customerID != null && !address.isEmpty() && !loyaltyLevel.isEmpty()) {
+			txtAreaCustomer.clear();
+			txtAreaCustomer.appendText("Please make sure to fill in all fields");
+
+		} else {
+
+			try {
+				dal.CreateCustomer(customerID, name, address, loyaltyLevel);
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+
+			}
+		}
+
+	}
+	
 	// Find Customer by customer ID
 
 	public void buttonFindCustomer(ActionEvent a) {
@@ -125,13 +148,12 @@ public class SampleController {
 			// ID, it will alert it
 			if (!rS.next()) {
 				txtAreaCustomer.clear();
-				txtAreaCustomer.appendText("Customer with this ID does not exist");
+				txtAreaCustomer.setText("Customer with this ID does not exist");
 			} else {
 				txtAreaCustomer.clear();
-				txtAreaCustomer.appendText("Customer ID: " + rS.getString("CustomerID"));
-				txtAreaCustomer.appendText("\nCustomer Name" + rS.getString("Name"));
-				txtAreaCustomer.appendText("\nCustomer Address" + rS.getString("Address"));
-				txtAreaCustomer.appendText("\nLoyalty Level" + rS.getString("LoyaltyLevel"));
+				txtAreaCustomer.setText("Customer ID: " + rS.getString("CustomerID") + "\nCustomer Name"
+						+ rS.getString("Name") + "\nCustomer Address:" + rS.getString("Address") + ""
+						+ "\nLoyalty Level" + rS.getString("LoyaltyLevel"));
 
 			}
 		} catch (SQLException e) {
@@ -139,4 +161,6 @@ public class SampleController {
 		}
 
 	}
+
+
 }

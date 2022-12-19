@@ -47,7 +47,7 @@ public class DataAccessLayer {
 	//Create order
 	public void CreateOrder(int OrderID, int OrderDate, int CustomerID, int ProductID)
 			throws SQLException {
-					try {
+					
 					String query = "INSERT INTO PRODUCT VALUES (?,?,?, ?) SET NOCOUNT ON";
 					Connection connection = DriverManager.getConnection(connectionURL);
 					PreparedStatement ps = connection.prepareStatement(query);
@@ -56,9 +56,8 @@ public class DataAccessLayer {
 					ps.setInt(3,  CustomerID);
 					ps.setInt(4, ProductID);
 					ps.executeUpdate();
-				}	catch (Exception e) {
-					System.out.println("e: " + e.getMessage());
-			}
+				
+			
 
 			}
 	//Viewing all orders 
@@ -85,7 +84,7 @@ public class DataAccessLayer {
 	//Creating customer
 	public void CreateCustomer(int CustomerID, String Name, String Address, String LoyaltyLevel)
 			throws SQLException {
-					try {
+					
 					String query = "INSERT INTO PRODUCT VALUES (?,?,?,?) SET NOCOUNT ON";
 					Connection connection = DriverManager.getConnection(connectionURL);
 					PreparedStatement ps = connection.prepareStatement(query);
@@ -94,9 +93,8 @@ public class DataAccessLayer {
 					ps.setString(3, Address);
 					ps.setString(4,  LoyaltyLevel);
 					 ps.executeUpdate();
-				}	catch (Exception e) {
-					System.out.println("e: " + e.getMessage());
-			}
+				
+				
 			}
 	
 	//Finding customer by customer ID
@@ -146,9 +144,8 @@ public ResultSet findOrdersForCertainCustomer( int customerID) throws SQLExcepti
 //Product
 
 // Creating Products
-public void CreateProduct(int ProductID, String ProductName, int Price)
+public void createProduct(int ProductID, String ProductName, int Price)
 throws SQLException {
-		try {
 		String query = "INSERT INTO PRODUCT VALUES (?,?,?) SET NOCOUNT ON";
 		Connection connection = DriverManager.getConnection(connectionURL);
 		PreparedStatement ps = connection.prepareStatement(query);
@@ -156,9 +153,7 @@ throws SQLException {
 		ps.setString(2, ProductName);
 		ps.setInt(3,  Price);
 		ps.executeUpdate();
-	}	catch (Exception e) {
-		System.out.println("e: " + e.getMessage());
-}
+	
 }
 
 				
